@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Average marks</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var students=[['David',80],['Vinoth',77],['Divya',88],['Ishitha',95],['Thomas',68]];
+		var avg=0;
+		for(var z=0;z<students.length;z++)
+		{
+			avg+=students[z][1];
+		}
+		avg/=students.length;
+
+		if(avg<60)
+			console.log("Average Marks: "+avg+"\nGrade: F");
+		else if(avg<70)
+			console.log("Average Marks: "+avg+"\nGrade: D");
+		else if(avg<80)
+			console.log("Average Marks: "+avg+"\nGrade: C");
+		else if(avg<90)
+			console.log("Average Marks: "+avg+"\nGrade: B");
+		else
+			console.log("Average Marks: "+avg+"\nGrade: A");
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

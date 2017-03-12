@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Insert Dashes</title>
+	<script type="text/javascript">
+		function insert(){
+			var num=document.getElementById("num").value;
+			var arr=num.split('');
+			var res=arr[0];
+			for(var x=1;x<arr.length;x++)
+			{
+				if(Number(arr[x])%2===0 && Number(arr[x-1])%2===0)
+					res+='-'+arr[x];
+				else
+				  res+=arr[x];
+			}
+			console.log(res);
+			
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="num"><br>
+	<button onclick="insert()">Insert</button>
+</body>
+</html>

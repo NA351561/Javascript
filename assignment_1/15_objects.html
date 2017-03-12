@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Objects</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var myObj =
+
+[{'name':'Saurabh', 'age': 30, 'occupation': "Team Leader"},
+
+{'name':'Anupriya', 'age': 32, 'occupation': "Team Leader"},
+
+{'name':'Kalyani', 'age': 25, 'occupation': "Programmer"},
+
+{'name':'Damodaran', 'age': 27, 'occupation': "Programmer"},
+
+{'name':'Krishnakath', 'age': 22, 'occupation': "Programmer"},
+
+{'name':'Venketraman', 'age': 28, 'occupation': "Programmer"}];
+
+console.log('-------Occupation: Programmer-------')
+for(var i of myObj)
+{
+  if(i.occupation==='Programmer')
+    console.log(i);
+}
+console.log('\n\n--------Sort the object basis the age key in the descending order----')
+
+myObj.sort(function(a,b){
+    return b.age-a.age;
+  });
+for(var i of myObj)
+  console.log(i);
+  
+console.log('\n\n--------Recreate the objects----')
+var res='{';
+var occup=new Set();
+for(var i of myObj)
+{
+  occup.add(i.occupation);
+}
+var occup=Array.from(occup);
+for(var z of occup)
+  {
+    res+='\''+z+'\':[';
+  for(var i of myObj)
+  {
+    if(i.occupation===z)
+    res+='{\'name\':\''+i.name+'\',\'age:\':'+i.age+'\'},';
+  
+  }
+  res+='],';
+}
+res+='};';
+
+console.log(res);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

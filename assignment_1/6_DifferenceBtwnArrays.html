@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Difference Between 2 Arrays</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var arr1=[1,2,3];
+var arr2=[1,100,5,2];
+var arr=[];
+var z=0;
+var flag=0;
+for(var i=0;i<arr1.length;i++ )
+{
+  for(var j=0;j<arr2.length;j++)
+  {
+    if(arr1[i]===arr2[j])
+    {
+      arr[z++]=arr1[i];
+    }
+    
+  }
+}
+var arrcon=arr1.concat(arr2);
+
+  for(var x=0;x<arrcon.length;x++)
+  {
+    for(var z=0;z<arr.length;z++)
+    {
+      if(arrcon[x]===arr[z])
+      {
+        arrcon[x]=0;
+      }
+    }
+  }
+
+var res=[];
+var k=0;
+for(var a of arrcon)
+{
+  if(a!==0){
+    res[k++]=a;
+  }
+}
+console.log(res);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

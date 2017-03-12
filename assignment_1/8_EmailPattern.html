@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Pattern</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function emailValid()
+		{
+			var email=document.getElementById('email').value;
+			var pattern=/^\w+([\.!#$%&'*+-/=?^`{|}~-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(pattern.test(email))
+				alert("valid email address");
+			else
+				alert("Not Valid Email Address");
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="email"><br>
+	<button onclick="emailValid()">Validate</button>
+</body>
+</html>
