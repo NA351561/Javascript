@@ -1,4 +1,4 @@
-<!-- Reading csv file and conevrting into json-->
+<!-- Reading csv file and converting into json-->
 const readline = require('readline'); //import readline module
 const fs = require('fs'); //import filesystem module
 
@@ -15,10 +15,8 @@ const rl = readline.createInterface({
 		}
 	})
 	rl.on('close', () => {
-  		out(readcsv);    //pass readdata values into out function after all data readed
- 		process.exit(0); 
-	
-		
+  		out(readcsv);    //pass readdata values into out function after all data read
+ 		//process.exit(0); 
 });
 function out(readcsv)
 {
@@ -37,7 +35,12 @@ function out(readcsv)
 				var s=(readdata[i].match(/Agricultural Production Oilseeds/i)||[]).length; // string match ignore case to get oil seed values
 				if(s>0)
 				{
-				oilobj[readdata[i]]=readdata[fieldvalue+i]; //store key as oil seeds and value as production value
+					var temp=readdata[fieldvalue+i];
+						if(temp=='NA') //converting 'NA' into 0
+						{
+							temp=0;	
+						}
+					oilobj[readdata[i]]=Number(temp); //store key as oil seeds and value as production value
 
 				}
 			
@@ -66,7 +69,12 @@ function out(readcsv)
 				var s5=(readdata[i].match(/Production Foodgrains/g)||[]).length; //contain only one production foodgrains
 				if(s1==1&&s2==0&&s3==0&&s4==0&&s5==1)
 				{
-				foodobj[readdata[i]]=readdata[fieldvalue+i]; //storing read values as key value pair
+					var temp=readdata[fieldvalue+i];
+						if(temp=='NA') //converting 'NA' into 0
+						{
+							temp=0;	
+						}
+					foodobj[readdata[i]]=Number(temp); //storing read values as key value pair
 
 				}
 			
@@ -85,26 +93,25 @@ function out(readcsv)
 			for(f=3;f<25;f++)
 			{
 				var total=0; //aggregate value calculation
-				var num=0; //count number of commercial crops
 				for(var i=25;i<readdata.length;i=i+26)
 				{
 						
 					var s1=(readdata[i].match(/Agricultural Production Commercial Crops/i)||[]).length; //match for only commercial crops					if(s1>0)
+					
+					if(s1>0)
 					{
-						num++;
+						
 						var temp=readdata[f+i+1]; //values of one year
-						if(temp=='NA')   // if 'NA' means assign as 0
+						if(temp==='NA')   // if 'NA' means assign as 0
 						{
 							temp=0;
 							total+=temp;
 						}
-						total+=parseInt(temp); //sum of the total values
-
-
+						total+=Number(temp); //sum of the total values
 					}
 					
 				}
-				comobj[readdata[f]]=(total)/num; //average of the values of one year
+				comobj[readdata[f]]=total; //aggregate values of one year
 			}
 			comobjarr.push(comobj);  //push all the values into array
 			fs.writeFileSync('CommercialCropsVsProduction.json',JSON.stringify(comobjarr)); //converting into JSON
@@ -129,10 +136,14 @@ function out(readcsv)
 					var s3=(readdata[i].match(/Agricultural Production Foodgrains Rice Yield Kerala/i)||[]).length;
 					var s4=(readdata[i].match(/Agricultural Production Foodgrains Rice Yield Tamil Nadu/i)||[]).length;
 					if(s1>0||s2>0||s3>0||s4>0)
-					{
-						
-							stateobj[readdata[i]]=readdata[f+i+1];  //store values for patricular state
+					{ 
+						var temp=readdata[f+i+1];
+						if(temp=='NA')
+						{
+							temp=0;	
+						}
 
+						stateobj[readdata[i]]=Number(temp);  //store values for patricular state
 					}
 					
 				}
