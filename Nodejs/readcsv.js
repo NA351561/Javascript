@@ -9,16 +9,16 @@ const rl = readline.createInterface({
 	var readcsv=[];		//creating empty array store read data values
 	rl.on('line', (line) => {
 		var txt=line.split(','); //split line by line
-		for(i=0;i<txt.length;i++)
+		for(index=0;index<txt.length;index++)
 		{
-	    	readcsv.push(txt[i].trim()); //remove empty space and push into array
+	    	readcsv.push(txt[index].trim()); //remove empty space and push into array
 		}
 	})
 	rl.on('close', () => {
-  		out(readcsv);    //pass readdata values into out function after all data read
+    gettingData(readcsv);    //pass readdata values into out function after all data read
  		//process.exit(0);
 });
-function out(readcsv)
+function gettingData(readcsv)
 {
 		var readdata=readcsv;
 		oilseeds();
@@ -86,17 +86,18 @@ function out(readcsv)
 		commercialCrops();
 		function commercialCrops()
 		{
-			var comobj={};
+
 			var comobjarr=[];
 			for(f=3;f<25;f++)
 			{
+        var comobj={};
 				var total=0; //aggregate value calculation
 				for(var i=25;i<readdata.length;i=i+26)
 				{
 
-					var s1=(readdata[i].match(/Agricultural Production Commercial Crops/i)||[]).length; //match for only commercial crops					if(s1>0)
-
-					if(s1>0)
+					var strcmp1=(readdata[i].match(/Agricultural Production Commercial Crops/i)||[]).length; //match for only commercial Crops
+          var strcmp2=(readdata[i].match(/and/i)||[]).length; //eleminate 2 types of crops
+					if(strcmp1>0&&strcmp2==0)
 					{
 
 						var temp=readdata[f+i+1]; //values of one year
@@ -109,9 +110,11 @@ function out(readcsv)
 					}
 
 				}
-				comobj[readdata[f]]=total; //aggregate values of one year
+        comobj['year']=readdata[f];
+				comobj['value']=total; //aggregate value of one year
+        comobjarr.push(comobj);  //push all the values into array
 			}
-			comobjarr.push(comobj);  //push all the values into array
+
 			fs.writeFileSync('CommercialCropsVsProduction.json',JSON.stringify(comobjarr)); //converting into JSON
 			console.log('Aggregate value of Commercial crops for all the years is converted into JSON\n');
 		}
@@ -120,11 +123,11 @@ function out(readcsv)
 		southStates();
 		function southStates()
 		{
-			var southobj={};
-			var southarr=[];
+      var statearr=[]; //store all state values
 			for(var i=25;i<readdata.length;i=i+26) //iterating to get all the values
 			{
-					var statearr=[];
+
+          var stateobj={}; //empty object to store values
 					//read only four states values
 					var s1=(readdata[i].match(/Agricultural Production Foodgrains Rice Yield Andhra Pradesh/i)||[]).length;
 					var s2=(readdata[i].match(/Agricultural Production Foodgrains Rice Yield Karnataka/i)||[]).length;
@@ -132,23 +135,22 @@ function out(readcsv)
 					var s4=(readdata[i].match(/Agricultural Production Foodgrains Rice Yield Tamil Nadu/i)||[]).length;
 					if(s1>0||s2>0||s3>0||s4>0)
 					{
-						for(f=3;f<25;f++)
-						{
-							var stateobj={};
+            stateobj['Particulars']=readdata[i].replace('Agricultural Production Foodgrains Rice Yield ','');
+
 							var temp=readdata[f+i+1];
 							if(temp=='NA')
 							{
 								temp=0;
 							}
+
 							stateobj[readdata[f]]=Number(temp);  //store values for all year
-							statearr.push(stateobj); //push into array
+
 						}
-						southobj[readdata[i]]=statearr; //key as state and value as all year object
+            statearr.push(stateobj); //push into array
 					}
 
 			}
-			southarr.push(southobj); //push into array
-			fs.writeFileSync('SouthernStates.json',JSON.stringify(southarr)); //convert into JSON
+			fs.writeFileSync('SouthernStates.json',JSON.stringify(statearr)); //convert into JSON
 			console.log('Rice Production of 4 Southern States is converted into JSON');
 		}
 }
