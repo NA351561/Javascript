@@ -4,9 +4,10 @@
 	<meta charset="utf-8">
 	<title>Date</title>
 	<script type="text/javascript">
-	var date=new Date();
-	var dayarray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-	console.log(date.toLocaleString()+" "+dayarray[date.getUTCDay()]);
+	//Display the date
+	var date=new Date(); //getting current date
+	var dayarray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];// array contain weekdays
+	console.log(date.toLocaleString()+" "+dayarray[date.getUTCDay()]); //date in mm/dd/yyyy and day
 	</script>
 </head>
 <body>

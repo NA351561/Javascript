@@ -4,19 +4,20 @@
 	<meta charset="utf-8">
 	<title>Insert Dashes</title>
 	<script type="text/javascript">
+	<!--Insert dashes between two even numbers-->
 		function insert(){
-			var num=document.getElementById("num").value;
-			var arr=num.split('');
-			var res=arr[0];
-			for(var x=1;x<arr.length;x++)
+			var num=document.getElementById("num").value; //getting number from the input box
+			var arr=num.split('');  //split each number
+			var result=arr[0]; 				//store first element in result
+			for(var x=1;x<arr.length;x++) //iterating each element to check
 			{
-				if(Number(arr[x])%2===0 && Number(arr[x-1])%2===0)
-					res+='-'+arr[x];
+				if(Number(arr[x])%2===0 && Number(arr[x-1])%2===0) //check the number is even
+					result+='-'+arr[x]; //if even insert dashes
 				else
-				  res+=arr[x];
+				  result+=arr[x];  //else concat it into result
 			}
-			console.log(res);
-			
+			console.log(result); //displaying the final result
+
 		}
 	</script>
 </head>
