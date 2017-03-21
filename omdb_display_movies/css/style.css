@@ -1,0 +1,32 @@
+/*header part css*/
+.header_css{
+  text-align: center;
+  background: #b2b4b7;
+  margin: auto;
+  color: white;
+  text-transform: capitalize;
+}
+/*input box alignment*/
+.input-group{
+  margin-top: 3%;
+  margin: auto;
+  text-align: center;
+}
+/*img aligment and size*/
+.thumbnail{
+    /*width: 300px;*/
+     width : 100%;
+    height: 400px;
+    overflow: auto;
+    text-align: center;
+}
+#backgroundCss{
+  background-image: url('img/background_book.jpg');
+}
+/*img size*/
+.thumbnail img{
+    /*styles for the image*/
+    width: 100%;
+    height: 70%;
+    display: block;
+}

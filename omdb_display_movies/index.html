@@ -1,0 +1,45 @@
+<!--Fetch data from json and display it in readable form-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fecth Movie Data</title> <!--title of the page-->
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1"> <!--Initai zoom size for all viewing device-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Fetching data js file-->
+    <script src="js/fetch_data.js"></script>
+    <!--style for the page-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- opening container class -->
+  <div class="container">
+    <!-- header part containing some css -->
+    <div class="header_css">
+      <h1>Search Movies</h1>
+    </div>
+    <!-- nav bar form to get some input from user -->
+    <form class="navbar-form" action="#">
+      <div class="input-group">
+        <!-- textbox to get input -->
+        <input type="text" class="form-control input-lg" placeholder="Type Movies" id="searchInput" required="required">
+        <div class="input-group-btn">
+          <!-- button with search icon -->
+          <button class="btn btn-success btn-lg" id="searchBtn">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+        <!-- end of input group btn -->
+      </div>
+      <!-- end of input group -->
+    </form>
+    <!-- end of form -->
+</div>
+<!-- end of the container class -->
+</body>
+</html>

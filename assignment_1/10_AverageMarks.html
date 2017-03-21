@@ -4,25 +4,26 @@
 	<title>Average marks</title>
 	<meta charset="utf-8">
 	<script type="text/javascript">
-		var students=[['David',80],['Vinoth',77],['Divya',88],['Ishitha',95],['Thomas',68]];
-		var avg=0;
-		for(var z=0;z<students.length;z++)
+	// display the Average marks and Grade
+		var students=[['David',80],['Vinoth',77],['Divya',88],['Ishitha',95],['Thomas',68]]; //array contain some sample values
+		var avg=0;							//initailize avg varaible with 0
+		for(var z=0;z<students.length;z++) //iterating student array to calculate sum of the marks
 		{
-			avg+=students[z][1];
+			avg+=students[z][1]; //each student contain marks in the second index
 		}
-		avg/=students.length;
+		avg/=students.length;  //calculate Average
 
 		if(avg<60)
-			console.log("Average Marks: "+avg+"\nGrade: F");
+			console.log("Average Marks: "+avg+"\nGrade: F"); //Average less than 60 grade F
 		else if(avg<70)
-			console.log("Average Marks: "+avg+"\nGrade: D");
+			console.log("Average Marks: "+avg+"\nGrade: D"); //Average less than 70 grade D
 		else if(avg<80)
-			console.log("Average Marks: "+avg+"\nGrade: C");
+			console.log("Average Marks: "+avg+"\nGrade: C"); //Average less than 80 grade C
 		else if(avg<90)
-			console.log("Average Marks: "+avg+"\nGrade: B");
+			console.log("Average Marks: "+avg+"\nGrade: B"); //Average less than 90 grade B
 		else
-			console.log("Average Marks: "+avg+"\nGrade: A");
-		
+			console.log("Average Marks: "+avg+"\nGrade: A"); //Average above 90 grade A
+
 	</script>
 </head>
 <body>

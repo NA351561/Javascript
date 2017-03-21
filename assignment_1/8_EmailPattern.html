@@ -4,11 +4,12 @@
 	<title>Email Pattern</title>
 	<meta charset="utf-8">
 	<script type="text/javascript">
-		function emailValid()
+	<!--email validation using regular expression-->
+		function emailValid()  //creating function for validate email
 		{
-			var email=document.getElementById('email').value;
-			var pattern=/^\w+([\.!#$%&'*+-/=?^`{|}~-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-			if(pattern.test(email))
+			var email=document.getElementById('email').value;  //get the value from the input box
+			var pattern=/^\w+([\.!#$%&'*+-/=?^`{|}~-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  //regular expression for email validation
+			if(pattern.test(email))  //testing the value with pattern
 				alert("valid email address");
 			else
 				alert("Not Valid Email Address");
@@ -16,7 +17,9 @@
 	</script>
 </head>
 <body>
+	<!-- input box to get text value -->
 	<input type="text" id="email"><br>
+	<!-- button onclick method to call the function emailValid -->
 	<button onclick="emailValid()">Validate</button>
 </body>
 </html>

@@ -6,12 +6,12 @@
 	<script type="text/javascript">
 	<!--Remove duplicate elements from the array-->
 		var arr=[-1,12,1,1,10,9,1,9]; //declare a array contain some values
-		var set=new Set();
-		for(x of arr){
-			set.add(x);
+		var set=new Set(); //create empty set
+		for(x of arr){ // for loop to push array values
+			set.add(x);  // set store unique elements
 		}
-		var res=Array.from(set);
-		console.log(res);
+		var res=Array.from(set); //convert set into array
+		console.log(res);  //displaying array values
 	</script>
 </head>
 <body>
