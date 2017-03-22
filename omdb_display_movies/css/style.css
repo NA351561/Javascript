@@ -1,7 +1,10 @@
+body{
+  background-image: url('../img/background_image.jpg');
+}
 /*header part css*/
 .header_css{
   text-align: center;
-  background: #b2b4b7;
+  background: #4e2f66;
   margin: auto;
   color: white;
   text-transform: capitalize;
@@ -19,9 +22,7 @@
     height: 400px;
     overflow: auto;
     text-align: center;
-}
-#backgroundCss{
-  background-image: url('img/background_book.jpg');
+    border: 0px;
 }
 /*img size*/
 .thumbnail img{
@@ -29,4 +30,9 @@
     width: 100%;
     height: 70%;
     display: block;
+    padding: 0;
+    border:0;
+}
+.hidding{
+  display: none;
 }
