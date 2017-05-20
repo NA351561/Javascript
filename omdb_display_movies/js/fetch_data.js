@@ -14,7 +14,6 @@ $(document).ready(function(){  //prevents the function to be called befor page l
             $('div').remove('#displayAlert');  //remove any of the tag present
             $('div').remove('#imgPagination');
             var createDiv="<div class='row' id='imagesList'></div>"; //create row tag
-            var createPagination="<div class='row' id='imgPagination'><ul class='pagination'></ul></div>"; //creating pagination
            $('div').remove('#imagesList'); //remove any of image list present
             $('.container').append(createDiv);  // append div tag to whole container tag
             var idArray=[]; //create empty array to store id;
@@ -28,6 +27,7 @@ $(document).ready(function(){  //prevents the function to be called befor page l
                 </div></div></div></a>";
                 $('#imagesList').append(createImg); //create image tag and append into row tag
             });//end of value foreach
+            var createPagination="<div class='row' id='imgPagination'><ul class='pagination'></ul></div>"; //creating pagination
             var pageLength=Math.ceil(idArray.length/3); //finding number of pages
             if(idArray.length>3) //if imagesList are greater than 3 create pagination
             {
